@@ -1,76 +1,93 @@
-from random import randint
+import random
 
+print("🧡🧡🧡Rock✊  Paper🖐️  Scissor✌️🧡🧡🧡")
+print("🧡🧡🧡get Ready for the game🧡🧡🧡")
+choice = ["Rock", "Paper", "Scissor"]
+choiEmoji = {"Rock": "✊",
+       "Paper": "🖐️",
+       "Scissor": "✌️"}
+Exit = ""
+camWin = 0
+youWin = 0
+tie = 0
+turn = int(input("Plzz Enter a number do you want to play: "))
+while turn:
 
-def get_computer_move():
-    moves = ["👊", "📃", "✂️"]
-    return moves[randint(0, 2)]
-
-
-def determine_winner(player_move, computer_move):
-    if player_move == computer_move:
-        return "Tie"
-    elif player_move == "👊":
-        return "Player" if computer_move == "✂️" else "Computer"
-    elif player_move == "📃":
-        return "Player" if computer_move == "👊" else "Computer"
-    elif player_move == "✂️":
-        return "Player" if computer_move == "📃" else "Computer"
-
-
-def print_results(player_move, computer_move, result):
-    print(f"Player chose {player_move}.")
-    print(f"Computer chose {computer_move}.")
-    if result == "Tie":
-        print("It's a Tie!")
-    else:
-        print(f"{result} wins!")
-
-
-def print_emojis():
-    print("Choose your move:")
-    print("👊 for Rock")
-    print("📃 for Paper")
-    print("✂️ for Scissors")
-
-
-def main():
-    print("Welcome to Rock, Paper, Scissors Game!")
-    print("Enter 'exit' to quit the game.")
-
-    chances = 5
-    current_chance = 1
-    player_wins = 0
-    computer_wins = 0
-
-    while current_chance <= chances:
-        print_emojis()
-        player_move = input(f"\nChance {current_chance}/{chances}. Your move: ")
-
-        if player_move == "exit":
-            print("Game Over. Exiting...")
+    while True:
+        print("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
+        userIn = input("Enter Rock,Paper or Scissor: ")
+        if (userIn == "Rock" or userIn == "Paper" or userIn == "Scissor"):
             break
+        else:
+            print("Please Enter Valid input 🥸🥸🥸")
 
-        if player_move not in ["👊", "📃", "✂️"]:
-            print("Invalid input. Please enter a valid emoji.")
-            continue
+    youIn = userIn[:]
+    comIn = random.randint(0, 2)
+    CIN = choice[comIn]
+    if (userIn == "Rock"):
+        userIn = choiEmoji["Rock"]
+    elif (userIn == "Paper"):
+        userIn = choiEmoji["Paper"]
+    elif (userIn == "Scissor"):
+        userIn = choiEmoji["Scissor"]
+    print("User input: ", userIn)
+    if (comIn == 0):
+        comIn = choiEmoji["Rock"]
+    elif (comIn == 1):
+        comIn = choiEmoji["Paper"]
+    elif (comIn == 2):
+        comIn = choiEmoji["Scissor"]
+    print("Computer input: ", comIn)
+    if (CIN == "Rock" and youIn == "Paper"):
+        print("Congratulation, You Win Brooo")
+        youWin += 1
+    elif (CIN == "Paper" and youIn == "Rock"):
+        print("Computer Win Brooo try again, Best Luckk!!")
+        camWin += 1
+    elif (CIN == "Paper" and youIn == "Scissor"):
+        print("Congratulation, You Win Brooo")
+        youWin += 1
+    elif (CIN == "Scissor" and youIn == "Paper"):
+        print("Computer Win Brooo try again, Best Luckk!!")
+        camWin += 1
+    elif (CIN == "Rock" and youIn == "Scissor"):
+        print("Computer Win Brooo try again, Best Luckk!!")
+        camWin += 1
+    elif (CIN == "Scissor" and youIn == "Rock"):
+        print("Congratulation, You Win Brooo")
+        youWin += 1
+    elif (CIN == "Paper" and youIn == "Paper"):
+        print("Its Tie Brooo")
+        tie += 1
+    elif (CIN == "Scissor" and youIn == "Scissor"):
+        print("Its Tie Brooo")
+        tie += 1
+    elif (CIN == "Rock" and youIn == "Rock"):
+        print("Its Tie Brooo")
+        tie += 1
+    turn -= 1
 
-        computer_move = get_computer_move()
-        result = determine_winner(player_move, computer_move)
+    if (turn == 0):
+        print("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
 
-        print_results(player_move, computer_move, result)
+        Exit = input("Do you want to play again? type Yes to play else type Exit: ")
+        if (Exit == "Yes"):
+            turn = int(input("Enter no of times you want to play: "))
+        else:
+            Exit == "Exit"
+            break
+print("Okk Byee!! Come again when You want to play😉 !!")
+print("🤗🤗🤗🤗🤗🤗🤗🤗🤗🤗🤗🤗🤗🤗🤗🤗🤗🤗🤗🤗🤗🤗🤗🤗🤗")
+print("****❤️ Final Result of the Game❤️ ****")
+print("🤗🤗🤗🤗🤗🤗🤗🤗🤗🤗🤗🤗🤗🤗🤗🤗🤗🤗🤗🤗🤗🤗🤗🤗🤗")
+print("Computer Score: ", camWin)
+print("Your Score: ", youWin)
+print("Number of Tie: ", tie)
+print("🤗🤗🤗🤗🤗🤗🤗🤗🤗🤗🤗🤗🤗🤗🤗🤗🤗🤗🤗🤗🤗🤗🤗🤗🤗")
 
-        if result == "Player":
-            player_wins += 1
-        elif result == "Computer":
-            computer_wins += 1
-
-        current_chance += 1
-
-    print("\nGame Summary:")
-    print(f"Player wins: {player_wins}")
-    print(f"Computer wins: {computer_wins}")
-    print("Thanks for playing!")
-
-
-if __name__ == "__main__":
-    main()
+if youWin > camWin:
+    print("Hurray!!🥳 You Won with ", youWin, " point.")
+elif youWin < camWin:
+    print("Ohh no!!🥹 Computer Won with ", camWin, " point.")
+else:
+    print("Oops😕 It's a Tie!!")
