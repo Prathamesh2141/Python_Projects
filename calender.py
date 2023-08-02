@@ -3,13 +3,13 @@ from tkcalendar import *
 
 
 root=Tk()
-# root.title('pm.com')
+root.title('PMCalender')
 # root.iconbitmap('c:/gui/pm.ico')
-root.geometry('600x400')
+root.geometry('400x400')
 
 
-cal=Calendar(root, selectmode="day", year=2023, month=8, day=2)
-cal.pack(pady=20)
+cal=Calendar(root, selectmode="day", date_pattern='dd/mm/yyyy')
+cal.pack(pady=20,expand=True,fill='both')
 
 def grabDate():
     myLeable.config(text=cal.get_date())
